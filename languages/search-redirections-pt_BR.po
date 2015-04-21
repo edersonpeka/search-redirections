@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-03-19 21:53:45+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Create redirect rules for any given search terms."
+msgstr "Crie regras de redirecionamento para quaisquer termos de busca."
+
+msgid "Search Redirections"
+msgstr "Redirecionamentos em Buscas"
+
+msgid "Rules"
+msgstr "Regras"
+
+msgid "Search term:"
+msgstr "Termo buscado:"
+
+msgid "Redirect to:"
+msgstr "Redirecionar para:"
+
+msgid "Options successfully saved."
+msgstr "Opções salvas com sucesso."
+
+msgid "Settings"
+msgstr "Configurações"
+
