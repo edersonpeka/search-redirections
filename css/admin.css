@@ -1,0 +1,35 @@
+.search-redirections-options table.form-table > tbody > tr > th {
+    display: none;
+}
+table.form-table table.search-redirections-groups th {
+    padding: 20px 10px 10px 12px;
+}
+.search-redirections-groups {
+    border-collapse: collapse;
+}
+.search-redirections-groups td {
+    vertical-align: top;
+}
+.search-redirections-groups .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-redirections-groups .dashicons {
+    margin: 7px 4px 4px;
+}
+.search-redirections-groups tbody {
+    border: 2px solid #CCC;
+}
+.search-redirections-groups tbody td:first-child {
+    border-right: 1px dotted #CCC;
+}
+.search-redirection-rule-buttons td {
+    border-bottom: 2px solid #CCC;
+}
+.search-redirection-rule-buttons td[colspan="2"] {
+    text-align: right;
+}
+.search-redirections-groups .-sr-group-name-input {
+    font-weight: bold;
+}

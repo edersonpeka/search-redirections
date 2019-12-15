@@ -4,7 +4,7 @@ Plugin Name: Search Redirections
 Plugin URI: https://peka.wordpress.com
 Description: Create redirect rules for any given search terms.
 Author: Ederson Peka
-Version: 0.1
+Version: 0.1.1
 Author URI: https://ederson.peka.nom.br
 Text Domain: search-redirections
 */
@@ -23,6 +23,8 @@ class search_redirections {
         add_action( 'admin_init', array( __CLASS__, 'options_init' ) );
         // Hooking into search requests
         add_filter( 'request', array( __CLASS__, 'modify_search_term' ) );
+        // Hooking into admin's screens
+        add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
     }
 
     // Creates options using Settings API
@@ -63,6 +65,9 @@ class search_redirections {
         foreach ( $rules as $rule ) :
             // if rule's structure is as expected...
             if ( is_array( $rule ) && array_key_exists( 'term', $rule ) && array_key_exists( 'dest', $rule ) && ! ( empty( $rule['term'] ) || empty( $rule['dest'] ) ) ) :
+                if ( ( !array_key_exists( 'group', $rule ) ) || empty( $rule['group'] ) ) :
+                    $rule['group'] = __( 'General', 'search-redirections' );
+                endif;
                 // populates array
                 $aux[] = $rule;
             endif;
@@ -72,32 +77,96 @@ class search_redirections {
 
     // Build form fields for rules (TODO: javascript interface)
     function rules_field() {
-        // Default (blank)
-        $def = array( array( 'term' => '', 'dest'=> '' ) );
-        // Adds one line every time
-        $rules = array_merge( call_user_func( array( __CLASS__, 'get_rules' ) ), $def );
+        // Saved rules
+        $rules = call_user_func( array( __CLASS__, 'get_rules' ) );
+        $group_names = array_unique( array_map( function ( $rule ) {
+            return $rule['group'];
+        }, $rules ) );
+        $groups = array();
+        foreach ( $group_names as $group_name ) :
+            $groups[ $group_name ] = array_filter( $rules, function ( $rule ) use ( $group_name ) {
+                return $rule['group'] == $group_name;
+            } );
+        endforeach;
         ?>
-        <table>
+        <table class="search-redirections-groups">
             <thead>
                 <tr>
-                    <th><?php _e( 'Search term:', 'search-redirections' ); ?></th>
-                    <th><?php _e( 'Redirect to:', 'search-redirections' ); ?></th>
+                    <th scope="col"><?php _e( 'Group:', 'search-redirections' ); ?></th>
+                    <th scope="col"><?php _e( 'Search term:', 'search-redirections' ); ?></th>
+                    <th scope="col"><?php _e( 'Redirect to:', 'search-redirections' ); ?></th>
                 </tr>
             </thead>
             <tbody>
-                <?php $r = 0; foreach ( $rules as $rule ) : ?>
-                    <tr>
-                        <td><input type="text" name="search_redirections_rules[<?php echo $r; ?>][term]" value="<?php echo esc_attr( $rule['term'] ); ?>" /></td>
-                        <td><input type="text" name="search_redirections_rules[<?php echo $r; ?>][dest]" value="<?php echo esc_attr( $rule['dest'] ); ?>" /></td>
+                <?php
+                $r = 0;
+                foreach ( $groups as $group => $rules ) :
+                    $first_rule = array_shift( $rules ); ?>
+                    <tr class="-sr-group">
+                        <td>
+                            <input type="text" name="search_redirections_rules[<?php echo $r; ?>][group]" value="<?php echo esc_attr( $group ); ?>" class="-sr-group-name-input" />
+                        </td>
+                        <td class="-sr-term">
+                            <input type="text" name="search_redirections_rules[<?php echo $r; ?>][term]" value="<?php echo esc_attr( $first_rule['term'] ); ?>" />
+                        </td>
+                        <td>
+                            <input type="text" name="search_redirections_rules[<?php echo $r; ?>][dest]" value="<?php echo esc_attr( $first_rule['dest'] ); ?>" size="35" />
+                        </td>
+                        <td></td>
                     </tr>
-                <?php $r++; endforeach; ?>
+                    <?php $r++; foreach ( $rules as $rule ) : ?>
+                        <tr class="-sr-rules">
+                            <td>
+                                <input type="text" name="search_redirections_rules[<?php echo $r; ?>][group]" value="<?php echo esc_attr( $group ); ?>" class="-sr-group-name-input" />
+                            </td>
+                            <td class="-sr-term">
+                                <input type="text" name="search_redirections_rules[<?php echo $r; ?>][term]" value="<?php echo esc_attr( $rule['term'] ); ?>" />
+                            </td>
+                            <td>
+                                <input type="text" name="search_redirections_rules[<?php echo $r; ?>][dest]" value="<?php echo esc_attr( $rule['dest'] ); ?>" size="35" />
+                            </td>
+                            <td>
+                                <a href="#" class="button button-link-delete -sr-remove-rule" title="<?php echo esc_attr( __( 'Remove rule', 'search-redirections' ) ); ?>"> 
+                                    <span class="dashicons dashicons-minus"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php $r++; endforeach; ?>
+                    <tr class="search-redirection-rule-buttons">
+                        <td>
+                            <a href="#" class="button button-link-delete -sr-remove-group"> 
+                                <span class="dashicons dashicons-minus"></span>
+                                <span><?php _e( 'Remove group', 'search-redirections' ); ?></span>
+                            </a>
+                        </td>
+                        <td colspan="2">
+                            <a href="#" class="button button-secondary -sr-add-rule"> 
+                                <span class="dashicons dashicons-plus"></span>
+                                <span><?php _e( 'Add rule', 'search-redirections' ); ?></span>
+                            </a>
+                        </td>
+                        <td></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <a href="#" class="button button-secondary -sr-add-group"> 
+                            <span class="dashicons dashicons-plus"></span>
+                            <span><?php _e( 'Add group', 'search-redirections' ); ?></span>
+                        </a>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
         <?php
     }
 
     function add_options_page() {
-        add_options_page( __( 'Search Redirections', 'search-redirections' ), __( 'Search Redirections', 'search-redirections' ), 'edit_theme_options', 'search_redirections_options', array( __CLASS__, 'render_options_page' ) );
+        $_page = add_options_page( __( 'Search Redirections', 'search-redirections' ), __( 'Search Redirections', 'search-redirections' ), 'edit_theme_options', 'search_redirections_options', array( __CLASS__, 'render_options_page' ) );
+        add_action( 'admin_print_styles-' . $_page, array( __CLASS__, 'admin_styles' ) );
+        add_action( 'admin_print_scripts-' . $_page, array( __CLASS__, 'admin_scripts' ) );
     }
 
     function render_options_page() {
@@ -106,9 +175,7 @@ class search_redirections {
 
         <div id="icon-options-general" class="icon32"><br /></div>
 
-        <?php /*if ( array_key_exists( 'settings-updated', $_GET ) && $_GET['settings-updated'] == 'true' ) : ?><div id="message" class="updated"><p><?php _e( 'Options successfully saved.', 'search-redirections' ); ?></p></div><?php endif;*/ // Not necessary when options page is child of general options ?>
-
-        <form method="post" action="options.php">
+        <form method="post" action="options.php" class="search-redirections-options">
         <?php
         // Render form fields
         settings_fields( 'search_redirections_options' );
@@ -175,6 +242,25 @@ class search_redirections {
             array_unshift( $links, $settings_link );
         }
         return $links;
+    }
+
+    function admin_init() {
+        $p_dir = WP_PLUGIN_URL . '/' . dirname( plugin_basename( __FILE__ ) ) . '/';
+        wp_register_style( 'search-redirections-admin-css', $p_dir . 'css/admin.css' );
+        wp_register_script( 'search-redirections-admin-script', $p_dir . 'js/admin.js' );
+    }
+    function admin_styles() {
+        wp_enqueue_style( 'search-redirections-admin-css' );
+    }
+    function admin_scripts() {
+        wp_localize_script( 'search-redirections-admin-script', 'search_redirections', array(
+            'remove_group' => __( 'Remove group', 'search-redirections' ),
+            'add_rule' => __( 'Add rule', 'search-redirections' ),
+            'remove_rule' => __( 'Remove rule', 'search-redirections' ),
+            'confirm_removal' => __( 'Are you sure?', 'search-redirections' ),
+            'confirm_unload' => __( 'Your unsaved data will be lost. Are you sure?', 'search-redirections' ),
+        ) );
+        wp_enqueue_script( 'search-redirections-admin-script', false, array( 'jquery' ) );
     }
 }
 

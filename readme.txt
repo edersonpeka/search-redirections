@@ -3,7 +3,7 @@ Contributors: Ederson Peka
 Tags: search, redirect, redirection, search terms
 Requires at least: 4.0
 Tested up to: 5.3.1
-Stable tag: 0.1
+Stable tag: 0.1.1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ederson@gmail.com&lc=BR&currency_code=BRL&item_name=Search%20Redirections%20Wordpress%20Plugin
 
 Create redirect rules for any given search terms.

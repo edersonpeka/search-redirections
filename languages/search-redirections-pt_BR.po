@@ -14,15 +14,38 @@ msgstr "Redirecionamentos em Buscas"
 msgid "Rules"
 msgstr "Regras"
 
+msgid "General"
+msgstr "Geral"
+
+msgid "Group:"
+msgstr "Grupo:"
+
 msgid "Search term:"
 msgstr "Termo buscado:"
 
 msgid "Redirect to:"
 msgstr "Redirecionar para:"
 
+msgid "Add group"
+msgstr "Novo grupo"
+
+msgid "Add rule"
+msgstr "Nova regra"
+
+msgid "Remove group"
+msgstr "Remover grupo"
+
+msgid "Remove rule"
+msgstr "Remover regra"
+
+msgid "Are you sure?"
+msgstr "Tem certeza?"
+
+msgid "Your unsaved data will be lost. Are you sure?"
+msgstr "Os dados que não forem salvos serão descartados. Você tem certeza?"
+
 msgid "Options successfully saved."
 msgstr "Opções salvas com sucesso."
 
 msgid "Settings"
 msgstr "Configurações"
-
