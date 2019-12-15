@@ -1,5 +1,5 @@
 === Search Redirections ===
-Contributors: Ederson Peka
+Contributors: edersonpeka
 Tags: search, redirect, redirection, search terms
 Requires at least: 4.0
 Tested up to: 5.3.1
