@@ -8,6 +8,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=eders
 
 Create redirect rules for any given search terms.
 
+= Portuguese: Resumo =
+
 Crie regras de redirecionamento para quaisquer termos de busca.
 
 
