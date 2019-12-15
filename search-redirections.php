@@ -75,7 +75,7 @@ class search_redirections {
         return $aux;
     }
 
-    // Build form fields for rules (TODO: javascript interface)
+    // Build form fields for rules
     function rules_field() {
         // Saved rules
         $rules = call_user_func( array( __CLASS__, 'get_rules' ) );
