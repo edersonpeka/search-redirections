@@ -8,9 +8,15 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=eders
 
 Create redirect rules for any given search terms.
 
+Crie regras de redirecionamento para quaisquer termos de busca.
+
+
 == Description ==
 
 Enter search terms and their respective redirection adresses. When users search for any of these terms, they will be imediately redirected to the specified destination.
+
+= Portuguese: Descrição =
+Cadastre termos de busca e seus respectivos endereços de redirecionamento. Quando os usuários buscarem por qualquer destes termos, eles serão imediatamente redirecionados para o destino especificado.
 
 == Installation ==
 
@@ -20,7 +26,18 @@ Enter search terms and their respective redirection adresses. When users search 
 4. Activate the plugin by clicking the 'activate' link
 5. Now go to the 'Options' section and select 'Search Redirections', where you can set up the redirections
 
+= Portuguese: Instalação =
+1. Extraia o conteúdo do arquivo
+2. Faça upload do conteúdo do diretório search-redirections para dentro do diretório 'wp-content/plugins'
+3. Acesse o painel do WordPress e vá para a seção 'Plugins'. Agora você já deve ver o Search Redirections na lista de plugins disponíveis
+4. Ative o plugin clicando no link 'ativar'
+5. Agora vá até a seção 'Configurações' e selecione 'Redirecionamentos em Buscas', onde você pode cadastrar os redirecionamentos
+
 == Frequently Asked Questions ==
 
 Nothing yet...
+
+= Portuguese: Perguntas Frequentes  =
+
+Nada ainda...
 
