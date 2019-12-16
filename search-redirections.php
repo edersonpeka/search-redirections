@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Search Redirections
-Plugin URI: https://peka.wordpress.com
+Plugin URI: https://ederson.peka.nom.br
 Description: Create redirect rules for any given search terms.
 Author: Ederson Peka
 Version: 0.1.1
-Author URI: https://ederson.peka.nom.br
+Author URI: https://profiles.wordpress.org/edersonpeka/
 Text Domain: search-redirections
 */
 
