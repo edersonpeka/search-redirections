@@ -20,6 +20,8 @@ jQuery( document ).ready( function () {
     window.onbeforeunload = search_redirections.ask_confirm;
     jQuery( 'form.search-redirections-options' ).on( 'change', function () {
         search_redirections.needs_confirm = true;
+    } ).on( 'submit', function () {
+        search_redirections.needs_confirm = false;
     } );
 
     var _table_groups = jQuery( '.search-redirections-groups' );

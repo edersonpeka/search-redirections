@@ -4,7 +4,7 @@ Plugin Name: Search Redirections
 Plugin URI: https://ederson.peka.nom.br
 Description: Create redirect rules for any given search terms.
 Author: Ederson Peka
-Version: 0.1.1
+Version: 0.1.2
 Author URI: https://profiles.wordpress.org/edersonpeka/
 Text Domain: search-redirections
 */
@@ -245,9 +245,20 @@ class search_redirections {
     }
 
     function admin_init() {
-        $p_dir = WP_PLUGIN_URL . '/' . dirname( plugin_basename( __FILE__ ) ) . '/';
-        wp_register_style( 'search-redirections-admin-css', $p_dir . 'css/admin.css' );
-        wp_register_script( 'search-redirections-admin-script', $p_dir . 'js/admin.js' );
+        $p_dir = WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/';
+        $p_url = WP_PLUGIN_URL . '/' . dirname( plugin_basename( __FILE__ ) ) . '/';
+        wp_register_style(
+            'search-redirections-admin-css',
+            $p_url . 'css/admin.css',
+            array(),
+            filemtime( $p_dir . 'css/admin.css' )
+        );
+        wp_register_script(
+            'search-redirections-admin-script',
+            $p_url . 'js/admin.js',
+            array( 'jquery' ),
+            filemtime( $p_dir . 'js/admin.js' )
+        );
     }
     function admin_styles() {
         wp_enqueue_style( 'search-redirections-admin-css' );
