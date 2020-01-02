@@ -49,3 +49,6 @@ msgstr "Opções salvas com sucesso."
 
 msgid "Settings"
 msgstr "Configurações"
+
+msgid "Redirect empty search results"
+msgstr "Redirecionar resultados de busca vazios"
