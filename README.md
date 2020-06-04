@@ -1,4 +1,4 @@
-# Search Redirections
+# Search Redirections WordPress Plugin
 
 Create redirect rules for any given search terms.
 
