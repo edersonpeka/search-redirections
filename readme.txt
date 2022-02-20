@@ -34,12 +34,3 @@ Cadastre termos de busca e seus respectivos endereços de redirecionamento. Quan
 3. Acesse o painel do WordPress e vá para a seção 'Plugins'. Agora você já deve ver o Search Redirections na lista de plugins disponíveis
 4. Ative o plugin clicando no link 'ativar'
 5. Agora vá até a seção 'Configurações' e selecione 'Redirecionamentos em Buscas', onde você pode cadastrar os redirecionamentos
-
-== Frequently Asked Questions ==
-
-Nothing yet...
-
-= Portuguese: Perguntas Frequentes  =
-
-Nada ainda...
-
