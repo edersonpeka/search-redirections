@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Search Redirections
-Plugin URI: https://ederson.peka.nom.br
+Plugin URI: https://ederson.ferreira.tec.br
 Description: Create redirect rules for any given search terms.
 Author: Ederson Peka
 Version: 0.1.3
