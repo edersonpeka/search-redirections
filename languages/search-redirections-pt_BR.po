@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-03-19 21:53:45+0300\n"
+"PO-Revision-Date: 2025-06-23 21:53:45+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9,7 +9,7 @@ msgid "Create redirect rules for any given search terms."
 msgstr "Crie regras de redirecionamento para quaisquer termos de busca."
 
 msgid "Search Redirections"
-msgstr "Redirecionamentos em Buscas"
+msgstr "Redirecionamentos em buscas"
 
 msgid "Rules"
 msgstr "Regras"
