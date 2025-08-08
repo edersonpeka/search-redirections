@@ -4,8 +4,10 @@ Plugin Name: Search Redirections
 Plugin URI: https://ederson.ferreira.tec.br
 Description: Create redirect rules for any given search terms.
 Author: Ederson Peka
-Version: 0.1.3
+Version: 0.1.4
 Author URI: https://profiles.wordpress.org/edersonpeka/
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: search-redirections
 */
 
@@ -15,8 +17,6 @@ class search_redirections {
 
     // Init
     public static function init() {
-        // Internationalization
-        load_plugin_textdomain( 'search-redirections', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
         // Hooking into admin's menus
         add_action( 'admin_menu', array( __CLASS__, 'add_options_page' ) );
         // Hooking into admin's screens
