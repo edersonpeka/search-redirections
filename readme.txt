@@ -2,7 +2,7 @@
 Contributors: edersonpeka
 Tags: search, redirect, redirection, search terms
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 6.8.2
 Stable tag: 0.1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
