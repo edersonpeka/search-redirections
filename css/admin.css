@@ -18,6 +18,9 @@ table.form-table table.search-redirections-groups th {
 .search-redirections-groups .dashicons {
     margin: 7px 4px 4px;
 }
+.wp-core-ui .search-redirections-groups .button .dashicons {
+    line-height: 1;
+}
 .search-redirections-groups tbody {
     border: 2px solid #CCC;
 }
